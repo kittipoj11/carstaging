@@ -1,0 +1,87 @@
+name: PHP Checks
+
+on:
+  push:
+  pull_request:
+  merge_group:
+
+jobs:
+  tests:
+    name: Run checks on PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: [8.1, 8.2]
+        include:
+          - php: 8.1
+            analysis: true
+          - php: 8.2
+            analysis: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Set up PHP ${{ matrix.php }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+
+      - name: Install openapi-generator-cli
+        run: echo "OPENAPI_GENERATOR_VERSION=6.6.0" >> $GITHUB_ENV
+      - uses: actions/cache@v4
+        id: openapi-generator-cache
+        env:
+          cache-name: openapi-generator-cache
+        with:
+          path: ~/bin/openapitools
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ env.OPENAPI_GENERATOR_VERSION }}
+      - if: steps.openapi-generator-cache.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p ~/bin/openapitools
+          curl https://raw.githubusercontent.com/OpenAPITools/openapi-generator/master/bin/utils/openapi-generator-cli.sh > ~/bin/openapitools/openapi-generator-cli
+          chmod u+x ~/bin/openapitools/openapi-generator-cli
+          export PATH=$PATH:~/bin/openapitools/
+          OPENAPI_GENERATOR_VERSION=${{ env.OPENAPI_GENERATOR_VERSION }} openapi-generator-cli version
+
+      - name: Generate code
+        run: |
+          export PATH=$PATH:~/bin/openapitools/
+          bash tools/gen-oas-client.sh
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-php-${{ matrix.php }}-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-${{ matrix.php }}-
+
+      - name: Install dependencies with Composer
+        uses: ramsey/composer-install@v2
+
+      - name: Check copyrights
+        if: matrix.analysis
+        run: bash tools/check_copyright.sh
+
+      - name: Check code style with PHP_CodeSniffer
+        if: matrix.analysis
+        run: composer cs
+
+      - name: Check with PHP Mess Detector 
+        if: matrix.analysis
+        run: composer md
+
+      - name: Check with PHPStan
+        if: matrix.analysis
+        run: vendor/bin/phpstan analyse
+
+      - name: Run unit tests
+        if: matrix.analysis
+        run: ./vendor/bin/phpunit --test-suffix=Test.php

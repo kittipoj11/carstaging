@@ -1,0 +1,103 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.div-item-waiting {
+    font-family: Courier, "Segoe UI", "Century Gothic", Impact;
+    font-weight: bold;
+    display: block;
+    /* outline: chartreuse; */
+    /* border-radius: 10px; */
+    font-size: 14px;
+    color: black;
+    text-align: center;
+
+    background-color: lightpink;
+    /* width: 100%; */
+    border: 3px solid black;
+    position: relative;
+}
+
+.div-item-calling {
+    font-family: Courier, "Segoe UI", "Century Gothic", Impact;
+    font-weight: bold;
+    display: block;
+    /* outline: chartreuse; */
+    /* border-radius: 10px; */
+    font-size: 14px;
+    color: black;
+    text-align: center;
+
+    background-color: lightyellow;
+    /* width: 100%; */
+    border: 3px solid black;
+    position: relative;
+
+    padding: 0;
+    margin: 0;
+}
+
+.div-item-loading {
+    font-family: Courier, "Segoe UI", "Century Gothic", Impact;
+    font-weight: bold;
+    display: block;
+    font-size: 14px;
+    color: black;
+    text-align: center;
+    background-color: lightcyan;
+    border: 3px solid black;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.btn-call,
+.btn-load,
+.btn-complete {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    /* border: 2px solid red; */
+    cursor: pointer;
+    /* background-color: transparent; */
+}
+
+.hall-name {
+    font-family: Courier, "Segoe UI", "Century Gothic", Impact;
+    font-weight: bold;
+    display: block;
+    border: 3px solid gold;
+    /* background-color: black; */
+    background-color: rgba(0, 0, 0, 0.9);
+    font-size: 16px;
+    color: gold;
+    text-align: center;
+}
+
+.hall-name:hover {
+    border: 3px solid black;
+    cursor: pointer;
+    color: black;
+    background-color: rgba(255, 215, 0, 0.9);
+}
+
+.hall-name:focus,
+.hall-name:active {
+    border: 3px solid gold;
+    color: black;
+    background-color: rgba(255, 215, 0, 0.9);
+}
+
+.hall-name.pojselected {
+    border: gold solid 3px;
+    color: black;
+    background-color: rgba(255, 215, 0, 0.9);
+}
+
+h5,
+h6 {
+    font-family: Courier, "Segoe UI", "Century Gothic", Impact;
+    font-weight: bold;
+}

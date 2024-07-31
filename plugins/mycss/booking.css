@@ -1,0 +1,459 @@
+/* The Body image */
+html,
+body {
+    height: 100vh;
+    width: 100%;
+    background-color: #fbfbfb;
+}
+
+.regisbox {
+    /* background-color: rgba(245, 245, 245, 0.4); */
+    /* background-clip: border-box; */
+    background-color: black;
+    border-radius: 10px;
+    /* box-shadow: 0 0 10px rgba(96, 134, 181, .3); */
+    text-align: center;
+    float: none;
+    margin-top: 150px;
+    /* margin: 200px 50%; */
+    /* grid-auto-columns: auto; */
+    width: 60%;
+    opacity: 0.8;
+}
+
+/* ส่วนที่เป็นฉากหลังของ Modal เลือกวันและเวลา */
+.myModal {
+    /* Hidden by default */
+    display: none;
+    /* display: block; */
+    /* Stay in place */
+    position: fixed;
+    /* Sit on top */
+    z-index: 1;
+    /* Location of the box */
+    padding-top: 100px;
+
+    left: 0;
+    top: 0;
+    /* Full width */
+    width: 100%;
+    /* Full height */
+    height: 100%;
+    /* Enable scroll if needed */
+    overflow: auto;
+    /* Fallback color */
+    background-color: rgb(0, 0, 0);
+    /* Black w/ opacity */
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* ส่วนที่เป็นฉากหลังของ Modal ยืนยันการจอง */
+.myModal_Confirm {
+    /* Hidden by default */
+    display: none;
+    /* display: block; */
+    /* Stay in place */
+    position: fixed;
+    /* Sit on top */
+    z-index: 2;
+    /* Location of the box */
+    padding-top: 100px;
+
+    left: 0;
+    top: 0;
+    /* Full width */
+    width: 100%;
+    /* Full height */
+    height: 100%;
+    /* Enable scroll if needed */
+    overflow: auto;
+    /* Fallback color */
+    /* background-color: rgb(0, 0, 0); */
+    /* Black w/ opacity */
+    /* background-color: rgba(0, 0, 0, 0.4); */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(234, 230, 229, 0.4);
+}
+
+/* ส่วนที่เป็นฉากหลังของ Modal QrCode */
+.qrcodeModal {
+    /* Hidden by default */
+    display: none;
+    /* display: flex; */
+    /* Stay in place */
+    position: fixed;
+    /* Sit on top */
+    z-index: 3;
+    /* Location of the box */
+    padding-top: 80px;
+
+    left: 0;
+    top: 0;
+    /* Full width */
+    width: 100%;
+    /* Full height */
+    height: 100%;
+    /* Enable scroll if needed */
+    overflow: auto;
+    /* Fallback color */
+    background-color: rgb(0, 0, 0);
+    /* Black w/ opacity */
+    /* background-color: rgba(0, 0, 0, 0.4); */
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(234, 230, 229, 0.4);
+
+    margin-bottom: 20px;
+}
+
+/* ส่วนที่เป็นข้อมูลของ Modal เลือกวันและเวลา */
+.myModalContent {
+    background-color: black;
+    color: white;
+    margin: auto;
+    /* margin: 0px 0px; */
+    padding: 20px;
+    /* border: 1px solid rgb(61, 61, 61); */
+    /* border: 1px solid red; */
+    min-width: 350px;
+    max-width: 650px;
+    border-radius: 10px;
+    box-sizing: border-box;
+
+    /* เพิ่มหรือแก้ไขจากของเดิม */
+    /* transform: translate(-50%, -50%) scale(0); */
+    /* top: 50%; */
+    /* left: 50%; */
+    /* border-radius: 10px; */
+    /* width: 60%; */
+    /* max-width: 80%; */
+    /* border: 1px solid red; */
+    /* transition: 200ms ease-in-out; */
+    /* opacity: 0.9; */
+    /* -webkit-transform: translate(-50%, -50%) scale(0.5); */
+}
+
+/* ส่วนที่เป็นข้อมูลของ Modal QrCode */
+.myModalContent_Qrcode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    padding: 10px;
+    box-sizing: border-box;
+    justify-content: center;
+    /* border: 1px solid red; */
+    /* position: fixed; */
+}
+
+
+/* ส่วนที่เป็นข้อมูลของ Modal ยืนยันการจอง */
+.myModalContent_Confirm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: #eae6e5; */
+    background-color: red;
+    /* margin: auto; */
+    padding: 10px;
+    box-sizing: border-box;
+    justify-content: center;
+    /* border: 1px solid red; */
+}
+
+.confirmBox {
+    border-top: 0.5rem solid yellow;
+    border-right: 0.5rem solid yellow;
+    border-bottom: 1rem solid yellow;
+    border-left: 0.5rem solid yellow;
+    border-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    color: red;
+    background-color: yellow;
+    /* margin-bottom: 6rem; */
+    /* margin-bottom: 2rem; */
+}
+
+.h5 {
+    color: white;
+    padding-top: 1rem;
+}
+
+/* Booking Box */
+.DateSectionHead,
+.TimeSectionHead {
+    display: block;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: black;
+    box-sizing: border-box;
+    /* display: grid; */
+    /* grid-template-columns: repeat(12, 48px); */
+    margin-left: 2px;
+    color: white;
+    /* border: 1px solid red; */
+    /* align-content: center; */
+    /* justify-content: center; */
+}
+
+.DaySection {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: black;
+    /* display: grid; */
+    /* grid-template-columns: repeat(12, 48px); */
+    margin-left: 2px;
+    color: white;
+    /* border: 1px solid red; */
+    /* align-content: center; */
+    /* justify-content: center; */
+}
+
+.TimeSection {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: black;
+    /* justify-content: center; */
+    /* display: grid; */
+    /* grid-template-columns: repeat(12, 48px); */
+    margin-left: 2px;
+    color: white;
+    /* border: 1px solid red; */
+    /* align-content: center; */
+    /* justify-content: center; */
+}
+
+.pojDay {
+    display: inline-block;
+    outline: none;
+    border: white solid 2px;
+    background-color: black;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    /* line-height: 48px; */
+    text-align: center;
+    height: 48px;
+    width: 48px;
+    margin: 1px;
+    box-sizing: border-box;
+
+
+}
+
+.pojDay:hover {
+    border: gold solid 2px;
+    cursor: pointer;
+    color: black;
+    background-color: gold;
+}
+
+.pojDay:focus,
+.pojDay:active {
+    border: gold solid 2px;
+    color: black;
+    background-color: gold;
+}
+
+.pojDay.pojselected {
+    border: gold solid 2px;
+    color: black;
+    background-color: gold;
+}
+
+.pojTime {
+    display: inline-block;
+    outline: none;
+    border: white solid 2px;
+    background-color: black;
+    border-radius: 4px;
+    font-size: 14px;
+    color: white;
+    line-height: 30px;
+    text-align: center;
+    height: 32px;
+    width: 48px;
+    margin: 1px;
+    box-sizing: border-box;
+    /* background-color: rgba(0, 0, 0, 0) */
+}
+
+.pojTime:hover {
+    background-color: black;
+    border: 2px solid gold;
+    color: gold;
+    cursor: pointer;
+}
+
+.pojTime:focus,
+.pojTime:active {
+    background-color: black;
+    border: 2px solid gold;
+    color: gold;
+}
+
+.pojTime.pojselected {
+    /* background-color: black;
+    border: 2px solid gold;
+    color: gold; */
+
+    background-color: gold;
+    border: gold solid 2px;
+    color: black;
+}
+
+.pojTimeInactive {
+    display: inline-block;
+    outline: none;
+    border: gray solid 2px;
+    background-color: black;
+    border-radius: 4px;
+    font-size: 14px;
+    color: gray;
+    line-height: 30px;
+    text-align: center;
+    height: 32px;
+    width: 48px;
+    margin: 1px;
+    box-sizing: border-box;
+    /* background-color: rgba(0, 0, 0, 0) */
+}
+
+.pojTimeInactive:hover {
+    /* background-color: black;
+    border: 2px solid gold;
+    color: gold; */
+    cursor: not-allowed;
+}
+
+#btn {
+    cursor: pointer;
+    box-sizing: border-box;
+    margin: 0;
+    width: 100%;
+}
+
+.cardfooter {
+    border: 1px solid red;
+}
+
+.form_control {
+    /* line-height: 5px; */
+    border: 1px red;
+}
+
+.form_control.success input {
+    box-sizing: border-box;
+    border: 2px solid greenyellow;
+}
+
+.form_control.success select {
+    box-sizing: border-box;
+    border: 2px solid greenyellow;
+}
+
+.form_control.fail input {
+    box-sizing: border-box;
+    border: 2px solid red;
+}
+
+.form_control.fail select {
+    box-sizing: border-box;
+    border: 2px solid red;
+}
+
+.form_control small {
+    color: red;
+    font-size: 11px;
+    font-style: italic;
+    /* visibility: hidden; */
+    display: none;
+}
+
+.form_control.success small {
+    font-size: 12px;
+    visibility: hidden;
+    border-color: green;
+}
+
+.form_control.fail small {
+    color: red;
+    font-size: 11px;
+    font-style: italic;
+    /* visibility: visible; */
+    display: inline;
+}
+
+#qrcode_title {
+    /* border: 0.5rem solid #8f8073; */
+    border-top: 0.5rem solid #8f8073;
+    border-right: 0.5rem solid #8f8073;
+    border-bottom: 0.5rem solid #8f8073;
+    border-left: 0.5rem solid #8f8073;
+    background-color: #8f8073;
+    /* border-radius: 0.5rem; */
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    /* margin-bottom: 6rem; */
+    margin-bottom: 0.25rem;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color: black;
+
+}
+
+#qrcode {
+    /* border: 0.5rem solid #8f8073; */
+    border-top: 0.5rem solid #8f8073;
+    border-right: 0.5rem solid #8f8073;
+    border-bottom: 0.5rem solid #8f8073;
+    border-left: 0.5rem solid #8f8073;
+    background-color: #8f8073;
+    /* border-radius: 0.5rem; */
+    /* border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem; */
+    /* margin-bottom: 6rem; */
+    margin-bottom: 0.25rem;
+    width: 100%;
+}
+
+
+#qrcode button {
+    display: flex;
+    justify-content: center;
+    background-color: #8f8073;
+    color: #eae6e5;
+    border: none;
+    outline: none;
+    width: 100%;
+    /* height: 100%; */
+    /* margin-top: 1rem; */
+    /* border-radius: 0.5rem; */
+}
+
+#qrcode button a {
+    margin-top: 0.25rem;
+    width: 100%;
+    /* height: 100%; */
+    text-decoration: none;
+    color: #eae6e5;
+    /* border-radius: 0.5rem; */
+    border-radius: 50%;
+    padding: 0;
+}
+
+#imgSelectDateTime {
+    /* border: 1px solid red; */
+    display: block;
+    max-width: 10%;
+    min-width: 5%;
+    height: auto;
+}
